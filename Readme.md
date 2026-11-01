@@ -68,24 +68,17 @@ pip install cryptography
 ```text
 Cryptography-and-Network-Security/
 │
-├── Assignment-1/
-│   └── rsa_performance.py
+├── assignment3.py
 │
-├── Assignment-2/
-│   └── xor_encryption.py
+├── assignment4.py
 │
-├── Assignment-3/
-│   └── diffie_hellman_mitm.py
+├── assignment5.py
 │
-├── Assignment-4/
-│   └── sha1_hashing.py
+├── assignment6.py
 │
-├── Assignment-5/
-│   └── digital_signature.py
+├── assignment7.py
 │
-├── Assignment-6/
-│   ├── secure_image_transmission.py
-│   └── image.jpg
+├── assignment9.py
 │
 └── README.md
 ```
