@@ -1,63 +1,57 @@
-
 # ==========================================
-# ASSIGNMENT 6: SECURE IMAGE TRANSMISSION
+# ASSIGNMENT 5: DIGITAL SIGNATURE USING DSS
 # ==========================================
 
-# STEP 1: Import Fernet encryption library
 
-from cryptography.fernet import Fernet
+# STEP 1: Import required libraries
 
-
-# STEP 2: Generate a secret encryption key
-
-key = Fernet.generate_key()
+from cryptography.hazmat.primitives.asymmetric import dsa
+from cryptography.hazmat.primitives import hashes
+from cryptography.exceptions import InvalidSignature
 
 
-# STEP 3: Create encryption object using the key
+# STEP 2: Generate DSA private key
 
-cipher = Fernet(key)
-
-
-# STEP 4: Open and read the original image
-
-# rb = Read Binary mode
-# Images must be read as binary data
-
-with open("image.jpg", "rb") as file:
-
-    image_data = file.read()
+private_key = dsa.generate_private_key(key_size=2048)
 
 
-# STEP 5: Encrypt the image data
+# STEP 3: Generate public key from private key
 
-encrypted_image = cipher.encrypt(image_data)
-
-
-# STEP 6: Save encrypted image data into a file
-
-# wb = Write Binary mode
-
-with open("encrypted_image.txt", "wb") as file:
-
-    file.write(encrypted_image)
-
-print("Image Encrypted Successfully!")
+public_key = private_key.public_key()
 
 
-# STEP 7: Decrypt the encrypted image
+# STEP 4: Accept message from user
 
-decrypted_image = cipher.decrypt(encrypted_image)
+# encode() converts string into bytes
 
-
-# STEP 8: Save the decrypted image
-
-with open("decrypted_image.jpg", "wb") as file:
-
-    file.write(decrypted_image)
-
-print("Image Decrypted Successfully!")
+message = input("Enter message: ").encode()
 
 
-# STEP 9: Display completion message
+# STEP 5: Generate digital signature using private key
 
-print("Secure Image Transmission Completed!")
+# SHA256 is used to generate the message digest
+
+signature = private_key.sign(message, hashes.SHA256())
+
+
+# STEP 6: Display generated digital signature
+
+print("Digital Signature Generated!")
+
+print("Signature:", signature.hex())
+
+
+# STEP 7: Verify digital signature using public key
+
+try:
+
+    public_key.verify(signature, message, hashes.SHA256())
+
+    print("Signature is Valid!")
+
+
+# STEP 8: Handle invalid signature
+
+except InvalidSignature:
+
+    print("Signature is Invalid!")
