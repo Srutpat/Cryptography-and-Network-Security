@@ -1,7 +1,10 @@
 
 # ==========================================
-# ASSIGNMENT 1: RSA PERFORMANCE ANALYSIS
+# ASSIGNMENT 3: RSA PERFORMANCE ANALYSIS
 # ==========================================
+'''Design an experiment to estimate the amount of time to i) Generate key pair (RSA) ii) Encrypt n
+bit message (RSA) iii) Decrypt n bit message (RSA) As function of key size, experiment with
+different n-bit messages. Summarize your conclusions '''
 
 # STEP 1: Import required libraries
 

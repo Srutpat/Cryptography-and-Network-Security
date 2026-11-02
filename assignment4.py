@@ -1,6 +1,13 @@
 # ==========================================
-# ASSIGNMENT 2: XOR ENCRYPTION AND DECRYPTION
+# ASSIGNMENT 4: XOR ENCRYPTION AND DECRYPTION
 # ==========================================
+'''Design and Implement your own encryption/decryption algorithm using any programming
+language. A start-up company is building a file-sharing system for its employees to exchange sensitive
+project documents (like contracts, reports, and source code). They cannot rely on existing
+standard algorithms (AES, DES, RSA, etc.) due to licensing and intellectual property concerns.
+Design and implement a custom encryption/decryption algorithm in a programming language of
+your choice (C, C++, Java, Python, etc.). The algorithm should securely convert plaintext
+messages into ciphertext and recover the original message correctly'''
 # STEP 1: Take message input from user
 message = input("Enter your message: ")
 # STEP 2: Define secret encryption key

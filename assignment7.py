@@ -1,7 +1,13 @@
 # ==========================================
 # ASSIGNMENT 5: DIGITAL SIGNATURE USING DSS
 # ==========================================
-
+'''A government e-procurement portal allows vendors to submit online tenders. To ensure
+authenticity and non-repudiation, vendors are required to digitally sign their tender documents
+before submission. The portal then verifies the digital signature to confirm:
+1. The document really comes from the vendor (authentication).
+2. The document was not modified in transit (integrity).
+3. The vendor cannot deny having submitted the document (non-repudiation).
+Demonstrate how the Digital Signature Standard worksby signing and verifying a text message'''
 
 # STEP 1: Import required libraries
 

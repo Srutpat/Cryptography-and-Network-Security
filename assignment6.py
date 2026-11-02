@@ -1,60 +1,68 @@
 
 # ==========================================
-# ASSIGNMENT 5: DIGITAL SIGNATURE (DSS)
+# ASSIGNMENT 6: SHA-1 MESSAGE DIGEST
+# AND AVALANCHE EFFECT
 # ==========================================
+'''Calculate the message digest of a text using the SHA-1 algorithm.
+A company wants to ensure that its software updates are not tampered with during download. To
+verify integrity, it provides a SHA-1 message digest for each update file. Customers can compute
+the digest of the downloaded file and compare it with the official digest. If both match, the file is
+authentic; if not, it indicates modification or corruption. Calculate the message digest of a given
+text using the SHA-1 algorithm and demonstrate how even a small change in the input produces a
+completely different digest, proving its usefulness in integrity verification'''
 
-# STEP 1: Import required libraries
+# STEP 1: Import hashing library
 
-from cryptography.hazmat.primitives.asymmetric import dsa
-from cryptography.hazmat.primitives import hashes
-from cryptography.exceptions import InvalidSignature
-
-
-# STEP 2: Generate private key
-
-private_key = dsa.generate_private_key(key_size=2048)
-
-
-# STEP 3: Generate corresponding public key
-
-public_key = private_key.public_key()
+import hashlib
 
 
-# STEP 4: Take message input
+# STEP 2: Take message input
+
+message = input("Enter a message: ")
+
+
+# STEP 3: Generate SHA-1 hash of original message
 
 # encode() converts string into bytes
+# sha1() generates the hash
+# hexdigest() converts hash into hexadecimal format
 
-message = input("Enter message: ").encode()
-
-
-# STEP 5: Generate digital signature
-
-# Private key is used to sign the message
-# SHA-256 is used as the hashing algorithm
-
-signature = private_key.sign(message, hashes.SHA256())
+hash_value = hashlib.sha1(message.encode()).hexdigest()
 
 
-# STEP 6: Display generated signature
+# STEP 4: Display original message and hash
 
-print("\nDigital Signature Generated!")
-
-print("Signature:", signature.hex())
-
-
-# STEP 7: Verify digital signature
-
-# Public key is used to verify the signature
-
-try:
-
-    public_key.verify(signature, message, hashes.SHA256())
-
-    print("\nSignature is Valid!")
+print("\nOriginal Message:", message)
+print("SHA-1 Hash:", hash_value)
 
 
-# STEP 8: Handle invalid signature
+# STEP 5: Modify the original message
 
-except InvalidSignature:
+# Add one character to the original message
 
-    print("\nSignature is Invalid!")
+modified_message = message + "A"
+
+
+# STEP 6: Generate hash of modified message
+
+modified_hash = hashlib.sha1(
+    modified_message.encode()
+).hexdigest()
+
+
+# STEP 7: Display modified message and hash
+
+print("\nModified Message:", modified_message)
+print("Modified Hash:", modified_hash)
+
+
+# STEP 8: Compare both hash values
+
+if hash_value != modified_hash:
+
+    print("\nMessage has been modified!")
+    print("Avalanche Effect Demonstrated!")
+
+else:
+
+    print("\nHashes are identical.")
