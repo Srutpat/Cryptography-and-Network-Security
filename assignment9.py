@@ -1,5 +1,5 @@
 # ==========================================
-# ASSIGNMENT 6: SECURE IMAGE TRANSMISSION
+# ASSIGNMENT 9: SECURE IMAGE TRANSMISSION
 # ==========================================
 '''Two users are exchanging the images on an unsecured network. Design a security system to
 protect the image from any security attack while transmitting it on the network. '''

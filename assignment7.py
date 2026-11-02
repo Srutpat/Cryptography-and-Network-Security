@@ -1,5 +1,5 @@
 # ==========================================
-# ASSIGNMENT 5: DIGITAL SIGNATURE USING DSS
+# ASSIGNMENT 7: DIGITAL SIGNATURE USING DSS
 # ==========================================
 '''A government e-procurement portal allows vendors to submit online tenders. To ensure
 authenticity and non-repudiation, vendors are required to digitally sign their tender documents
